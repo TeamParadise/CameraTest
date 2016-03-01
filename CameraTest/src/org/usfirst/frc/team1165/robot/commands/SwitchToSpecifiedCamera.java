@@ -7,19 +7,22 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SwitchCamera extends Command
+public class SwitchToSpecifiedCamera extends Command
 {
+	private String cameraName;
 
-	public SwitchCamera()
+	public SwitchToSpecifiedCamera(String cameraName)
 	{
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		
+		this.cameraName = cameraName;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
-		Robot.camera.switchSession();
+		Robot.camera.setCamera(cameraName);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

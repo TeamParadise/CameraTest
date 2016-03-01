@@ -1,9 +1,11 @@
 package org.usfirst.frc.team1165.robot;
 
-import org.usfirst.frc.team1165.robot.commands.SwitchCamera;
+import org.usfirst.frc.team1165.robot.commands.SwitchToNextCamera;
+import org.usfirst.frc.team1165.robot.commands.SwitchToSpecifiedCamera;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -16,7 +18,11 @@ public class OI
 	public final JoystickButton cameraButton = new JoystickButton(leftStick,2);
 	public OI()
 	{
-		cameraButton.whenPressed(new SwitchCamera());
+		cameraButton.whenPressed(new SwitchToNextCamera());
+		
+		SmartDashboard.putData(new SwitchToNextCamera());
+		SmartDashboard.putData("cam6", new SwitchToSpecifiedCamera("cam6"));
+		SmartDashboard.putData("cam7", new SwitchToSpecifiedCamera("cam7"));
 	}
 	
 	public boolean useSecondaryCamera()
